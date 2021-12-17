@@ -1,8 +1,9 @@
 import dungeon from "./dungeon.js"
 
 export default class PlayerCharacter {
-    constructor(x, y) {
-        this.movementPoints = 1
+    constructor(x, y, movementPoints = 1) {
+        this.baseMovementPoints = movementPoints
+        this.movementPoints = movementPoints
         this.cursors = dungeon.scene.input.keyboard.createCursorKeys()
         this.x = x
         this.y = y
@@ -12,7 +13,7 @@ export default class PlayerCharacter {
     }
 
     refresh() {
-        this.movementPoints = 1
+        this.movementPoints = this.baseMovementPoints
     }
 
     turn() {
@@ -47,8 +48,11 @@ export default class PlayerCharacter {
         }
 
         // wall collision check
+
+        // wall digging check
         let tileAtDestination = dungeon.map.getTileAt(this.x, this.y)
         if (tileAtDestination.index == dungeon.sprites.wall) {
+            tileAtDestination.index = 0
             this.x = oldX
             this.y = oldY
         }

@@ -1,3 +1,4 @@
+
 class DNode {
     constructor(area) {
         this.left = false

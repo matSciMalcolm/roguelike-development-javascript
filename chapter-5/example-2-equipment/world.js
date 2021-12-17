@@ -6,6 +6,7 @@ import CursedGem from "./items/cursedGem.js"
 import Gem from "./items/gem.js"
 import LongSword from "./items/longSword.js"
 import Potion from "./items/potion.js"
+import { Gold } from "./resource_nodes/gold.js"
 
 const world = {
     key: "world-scene",
@@ -34,6 +35,7 @@ const world = {
         tm.addEntity(new Skeleton(76, 10))
         tm.addEntity(new Skeleton(29, 24))
         tm.addEntity(new Skeleton(29, 20))
+        tm.addEntity(new Gold(19, 19))
 
 
         // Set camera, causes game viewport

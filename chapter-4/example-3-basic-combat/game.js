@@ -2,6 +2,8 @@ import dungeon from "./dungeon.js"
 import tm from "./turnManager.js"
 import PlayerCharacter from "./player.js"
 import BasicMonster from "./monster.js"
+import Screamer from "./screamer.js"
+import Vampire from "./vampire.js"
 
 const scene = {
     preload: function () {
@@ -12,11 +14,10 @@ const scene = {
         dungeon.initialize(this)
         dungeon.player = new PlayerCharacter(15, 15)
         tm.addEntity(dungeon.player)
-        tm.addEntity(new BasicMonster(20,20))
-        tm.addEntity(new BasicMonster(20,10))
-        tm.addEntity(new BasicMonster(76,10))
-        tm.addEntity(new BasicMonster(29,24))
-        tm.addEntity(new BasicMonster(29,20))
+        //tm.addEntity(new BasicMonster(20, 20))
+        tm.addEntity(new BasicMonster(20, 10))
+        tm.addEntity(new Screamer(29, 24))
+        tm.addEntity(new Vampire(29, 20))
     },
     update: function () {
         if (tm.over()) {

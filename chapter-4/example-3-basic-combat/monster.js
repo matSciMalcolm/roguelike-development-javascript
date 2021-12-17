@@ -1,5 +1,9 @@
 import dungeon from "./dungeon.js"
 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
 export default class BasicMonster {
     constructor(x, y) {
         this.name = "A Dangerous Monster"
@@ -18,7 +22,7 @@ export default class BasicMonster {
     }
 
     attack() {
-        return 1
+        return getRandomInt(3)
     }
 
     turn() {

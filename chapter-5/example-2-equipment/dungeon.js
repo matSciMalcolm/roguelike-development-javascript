@@ -26,7 +26,7 @@ let dungeon = {
     isWalkableTile: function (x, y) {
         // check all entities.
         let allEntities = [...tm.entities]
-        for (let e = 0; e < allEntities.length; e++ ) {
+        for (let e = 0; e < allEntities.length; e++) {
             let entity = allEntities[e]
             if (entity.sprite && entity.x == x && entity.y == y) {
                 return false
@@ -38,7 +38,7 @@ let dungeon = {
     },
     entityAtTile: function (x, y) {
         let allEntities = [...tm.entities]
-        for (let e = 0; e < allEntities.length; e++ ) {
+        for (let e = 0; e < allEntities.length; e++) {
             let entity = allEntities[e]
             if (entity.sprite && entity.x == x && entity.y == y) {
                 return entity
@@ -46,17 +46,21 @@ let dungeon = {
         }
         return false
     },
-    removeEntity: function(entity) {
+    removeEntity: function (entity) {
         tm.entities.delete(entity)
         entity.sprite.destroy()
         delete entity.sprite
         entity.onDestroy()
     },
-    itemPicked: function(entity) {
+    itemPicked: function (entity) {
         entity.sprite.destroy()
         delete entity.sprite
     },
-    initializeEntity: function(entity) {
+    resourceCollected: function (entity) {
+        entity.sprite.destroy()
+        delete entity.sprite
+    },
+    initializeEntity: function (entity) {
         if (entity.x && entity.y) {
             let x = this.map.tileToWorldX(entity.x)
             let y = this.map.tileToWorldY(entity.y)
@@ -64,8 +68,8 @@ let dungeon = {
             entity.sprite.setOrigin(0)
         }
     },
-    moveEntityTo: function(entity, x, y) {
-        entity.moving = true 
+    moveEntityTo: function (entity, x, y) {
+        entity.moving = true
         entity.x = x
         entity.y = y
 
@@ -78,9 +82,9 @@ let dungeon = {
             y: this.map.tileToWorldY(y),
             ease: "Power2",
             duration: 100
-        })        
+        })
     },
-    distanceBetweenEntities: function(e1, e2) {
+    distanceBetweenEntities: function (e1, e2) {
         let grid = new PF.Grid(dungeon.level)
         let finder = new PF.AStarFinder({
             allowDiagonal: true
@@ -92,10 +96,10 @@ let dungeon = {
             return false
         }
     },
-    attackEntity: function(attacker, victim) {
+    attackEntity: function (attacker, victim) {
         attacker.moving = true
         attacker.tweens = attacker.tweens || 0
-        attacker.tweens += 1  
+        attacker.tweens += 1
 
         this.scene.tweens.add({
             targets: attacker.sprite,
@@ -109,7 +113,7 @@ let dungeon = {
                 victim.healthPoints -= damage
 
                 this.log(`${attacker.name} does ${damage} damage to ${victim.name}.`)
-                
+
                 if (victim.healthPoints <= 0) {
                     this.removeEntity(victim)
                 }
@@ -121,11 +125,11 @@ let dungeon = {
             duration: 80,
             delay: attacker.tweens * 200,
             yoyo: true
-        })  
+        })
     },
-    log: function(text) {
+    log: function (text) {
         this.msgs.unshift(text)
-        this.msgs = this.msgs.slice(0,8) 
+        this.msgs = this.msgs.slice(0, 8)
     }
 }
 

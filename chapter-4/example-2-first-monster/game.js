@@ -13,6 +13,7 @@ const scene = {
         dungeon.player = new PlayerCharacter(15, 15)
         tm.addEntity(dungeon.player)
         tm.addEntity(new BasicMonster(70, 8))
+        tm.addEntity(new BasicMonster(65, 8))
     },
     update: function () {
         if (tm.over()) {

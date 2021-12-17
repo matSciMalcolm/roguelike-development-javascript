@@ -2,10 +2,14 @@ import dungeon from "./dungeon.js"
 import tm from "./turnManager.js"
 import PlayerCharacter from "./player.js"
 import Skeleton from "./enemies/skeleton.js"
+import Seeker from "./enemies/seeker.js"
 import CursedGem from "./items/cursedGem.js"
 import Gem from "./items/gem.js"
 import LongSword from "./items/longSword.js"
 import Potion from "./items/potion.js"
+import HealthPotion from "./items/healthpotion.js"
+import AttackPotion from "./items/attackPotion.js"
+import SeekerGem from "./items/seekerGem.js"
 
 const world = {
     key: "world-scene",
@@ -25,15 +29,19 @@ const world = {
         dungeon.player = new PlayerCharacter(15, 15)
 
         tm.addEntity(dungeon.player)
-        tm.addEntity(new Skeleton(20, 20))
-        tm.addEntity(new Skeleton(20, 10))
+        //tm.addEntity(new Skeleton(20, 20))
+        //tm.addEntity(new Skeleton(20, 10))
         tm.addEntity(new CursedGem(15, 20))
-        tm.addEntity(new Potion(18, 18))
+        tm.addEntity(new AttackPotion(18, 18))
+        tm.addEntity(new SeekerGem(15, 16))
+        tm.addEntity(new Potion(15, 17))
+        tm.addEntity(new HealthPotion(18, 19))
         tm.addEntity(new LongSword(18, 22))
         tm.addEntity(new Gem(21, 21))
-        tm.addEntity(new Skeleton(76, 10))
-        tm.addEntity(new Skeleton(29, 24))
-        tm.addEntity(new Skeleton(29, 20))
+        //tm.addEntity(new Skeleton(76, 10))
+        //tm.addEntity(new Skeleton(29, 24))
+        //tm.addEntity(new Skeleton(29, 20))
+        tm.addEntity(new Seeker(39, 18))
 
 
         // Set camera, causes game viewport

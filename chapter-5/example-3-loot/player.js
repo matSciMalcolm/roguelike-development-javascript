@@ -54,7 +54,7 @@ export default class PlayerCharacter {
     removeItem(itemNumber) {
         const item = this.items[itemNumber]
 
-        if (item) {           
+        if (item) {
             this.items.forEach(i => {
                 i.UIsprite.destroy()
                 delete i.UIsprite
@@ -68,6 +68,7 @@ export default class PlayerCharacter {
     removeItemByProperty(property, value) {
         this.items.forEach(i => {
             i.UIsprite.destroy()
+            i.destroy()
             delete i.UIsprite
         })
         this.items = this.items.filter(i => i[property] !== value)

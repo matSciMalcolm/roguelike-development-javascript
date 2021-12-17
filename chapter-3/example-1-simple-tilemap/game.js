@@ -9,7 +9,7 @@ const scene = {
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 23, 0, 0, 0, 0, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
@@ -20,7 +20,14 @@ const scene = {
         // Just convert the walls from 1 to 554.
         const wall = 554
         const floor = 0
-        level = level.map(r => r.map(t => t == 1 ? wall : floor))
+        const skeleton = 24
+        //level = level.map(r => r.map(t => t == 1 ? wall : t => t == 23 ? skeleton : floor))
+        tile_dict = {
+            0: floor,
+            1: wall,
+            23: skeleton
+        }
+        level = level.map(r => r.map(t => tile_dict[t] || 0))
 
         // Draw the tilemap
         const tileSize = 16

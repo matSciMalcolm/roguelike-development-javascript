@@ -10,13 +10,13 @@ export default class BasicMonster {
     }
 
     refresh() {
-        this.movementPoints = 1
+        this.movementPoints = 2
     }
 
     turn() {
         let oldX = this.x
         let oldY = this.y
-    
+
         if (this.movementPoints > 0) {
             // https://github.com/qiao/PathFinding.js
             let pX = dungeon.player.x
@@ -24,7 +24,7 @@ export default class BasicMonster {
             let grid = new PF.Grid(dungeon.level)
             let finder = new PF.AStarFinder()
             let path = finder.findPath(oldX, oldY, pX, pY, grid)
-    
+
             if (path.length > 2) {
                 dungeon.moveEntityTo(this, path[1][0], path[1][1])
             }

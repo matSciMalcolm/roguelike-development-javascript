@@ -1,5 +1,6 @@
 const tm = {
     interval: 150,
+    turn_count: 0,
     entities: new Set(),
     lastCall: Date.now(),
     addEntity: (entity) => tm.entities.add(entity),

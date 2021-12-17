@@ -156,7 +156,7 @@ let dungeon = {
                 y: this.map.tileToWorldY(victim.y),
                 ease: "Power2",
                 hold: 20,
-                duration: 180,
+                duration: 360,
                 delay: attacker.tweens * 200
             })
         }
